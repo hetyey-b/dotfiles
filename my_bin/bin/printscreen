@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec import ~/Pictures/Screenshots/screenshot-$(date "+%F-%T").jpg

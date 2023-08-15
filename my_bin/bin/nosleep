@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Turning off i3 auto sleep..."
+xset s off
+xset -dpms

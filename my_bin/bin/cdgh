@@ -1,0 +1,21 @@
+#!/bin/bash
+
+match_folder=$(ls -d ~/Documents/Github/* | grep -i "$1" | head -n 1)
+if [ -z "$match_folder" ] 
+then
+    echo "$1 not found in ~/Documents/Github"
+else
+    echo $match_folder
+    cd "$match_folder"
+
+    tmuxrc_file=$(ls -la "$match_folder" | grep ".tmuxrc" | head -n 1)
+
+    if [ -z "$tmuxrc_file" ]
+    then
+        tmux new-session -d -s "$(basename $PWD)"
+        tmux attach-session -t "$(basename $PWD)"
+    else
+        tmux new-session -d -s "$(basename $PWD)" -A 'tmux source-file ./.tmuxrc'
+        tmux attach-session -t "$(basename $PWD)"
+    fi
+fi

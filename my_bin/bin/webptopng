@@ -1,0 +1,10 @@
+#!/bin/bash
+
+files=`ls ./*.webp`
+
+for file in $files
+do 
+    echo "converting ${file}"
+    filename="${file%.*}"
+    exec "dwebp ${file} -o ${filename}.png"
+done

@@ -241,7 +241,8 @@ bar {
   }
 }
 
-bindsym $mod+d exec "dmenu_run -nf '#BFC6D4' -nb '#191828' -sb '#363545' -sf '#BFC6D4' -fn 'JetBrainsMono Nerd Font:size=11' -p 'run:'"
+# bindsym $mod+d exec --no-startup-id ~/bin/custom_dmenu
+bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BFC6D4' -nb '#191828' -sb '#363545' -sf '#BFC6D4' -fn 'JetBrainsMono Nerd Font:size=11' -p 'run:'"
 # Moving workspaces between screens
 bindsym $mod+p move workspace to output right
 
