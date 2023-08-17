@@ -1,3 +1,6 @@
+# Open obsidian
+bindsym $mod+o exec obsidian
+
 # Screenshot
 bindsym $mod+Shift+s exec screenshot
 bindsym Print exec printscreen

@@ -1,0 +1,71 @@
+# Sometimes ansible may fail to run due to 
+# python not being available, even if python3 is 
+# you can solve it by symlinking python3: 
+# ln -s /usr/bin/python3 /usr/bin/python
+- hosts: localhost
+  become: true
+  # pre_tasks:
+  #   - name: Update cache
+  #     apt:
+  #       update_cache: true
+  #     tags:
+  #       - zsh
+  #       - node
+  #       - rust
+  #       - password-store
+  tasks:
+    - name: Install zsh
+      apt: name=zsh
+      tags:
+        - zsh
+    - name: Change shell
+      shell: chsh -s `which zsh`
+      tags:
+        - zsh
+    - name: Install ohmyzsh
+      shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
+      tags:
+        - zsh
+    - name: Install zsh plugin for autosuggestions
+      ansible.builtin.git:
+        repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+        dest: '~/.oh-my-zsh/plugins/zsh-autosuggestions'
+      tags:
+        - zsh
+    - name: update zshrc
+      shell: sed -i 's/(git/(git zsh-autosuggestions' ~/.zshrc
+      tags:
+        - zsh
+
+    - name: install node
+      apt: name=nodejs
+      tags:
+        - node 
+    - name: install npm
+      apt: name=npm
+      tags:
+        - node 
+
+    - name: check if cargo is installed
+      shell: command -v cargo
+      register: cargo_exists
+      ignore_errors: yes
+    - name: Download Installer
+      when: cargo_exists is failed
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: '0755'
+        force: 'yes'
+      tags:
+        - rust
+    - name: install rust/cargo
+      when: cargo_exists is failed
+      shell: /tmp/sh.rustup.rs -y
+      tags:
+        - rust
+
+    - name: Install password-store
+      apt: name=pass
+      tags:
+        - password-store
