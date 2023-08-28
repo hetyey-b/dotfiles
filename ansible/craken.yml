@@ -88,4 +88,8 @@
 #      shell: /home/craken/.cargo/bin/cargo install bacon
 #      tags:
 #        - oxidize-tools
+#    - name: Install batcat
+#      shell: /home/craken/.cargo/bin/cargo install bat
+#      tags:
+#        - oxidize-tools
 
