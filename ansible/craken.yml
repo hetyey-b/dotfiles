@@ -50,8 +50,10 @@
       shell: command -v cargo
       register: cargo_exists
       ignore_errors: yes
+      tags:
+        - rust
     - name: Download Installer
-      when: cargo_exists is failed
+      when: cargo_exists.rc != 0  # Check if the command failed (non-zero return code)
       get_url:
         url: https://sh.rustup.rs
         dest: /tmp/sh.rustup.rs
@@ -60,7 +62,7 @@
       tags:
         - rust
     - name: install rust/cargo
-      when: cargo_exists is failed
+      when: cargo_exists.rc != 0  # Check if the command failed (non-zero return code)
       shell: /tmp/sh.rustup.rs -y
       tags:
         - rust
@@ -69,3 +71,21 @@
       apt: name=pass
       tags:
         - password-store
+
+#    - name: Install ncspot
+#      shell: /home/craken/.cargo/bin/cargo install ncspot
+#      tags:
+#        - oxidize-tools
+#    - name: Install wiki-tui
+#      shell: /home/craken/.cargo/bin/cargo install wiki-tui
+#      tags:
+#        - oxidize-tools
+#    - name: Install du-dust
+#      shell: /home/craken/.cargo/bin/cargo install du-dust
+#      tags:
+#        - oxidize-tools
+#    - name: Install bacon
+#      shell: /home/craken/.cargo/bin/cargo install bacon
+#      tags:
+#        - oxidize-tools
+
