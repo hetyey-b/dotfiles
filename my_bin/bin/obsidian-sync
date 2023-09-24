@@ -2,6 +2,7 @@
 
 cd ~/Documents/Github/obsidian_md_notes/
 now=$(date +'%Y-%m-%d %H:%M:%S')
+git pull
 git add --all
 git commit -m "$now"
 git push

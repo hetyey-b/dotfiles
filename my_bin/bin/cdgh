@@ -1,21 +1,32 @@
 #!/bin/bash
 
-match_folder=$(ls -d ~/Documents/Github/* | grep -i "$1" | head -n 1)
-if [ -z "$match_folder" ] 
-then
-    echo "$1 not found in ~/Documents/Github"
+if [[ $# -eq 1 ]]; then
+    selected=$1
 else
-    echo $match_folder
-    cd "$match_folder"
-
-    tmuxrc_file=$(ls -la "$match_folder" | grep ".tmuxrc" | head -n 1)
-
-    if [ -z "$tmuxrc_file" ]
-    then
-        tmux new-session -d -s "$(basename $PWD)"
-        tmux attach-session -t "$(basename $PWD)"
-    else
-        tmux new-session -d -s "$(basename $PWD)" -A 'tmux source-file ./.tmuxrc'
-        tmux attach-session -t "$(basename $PWD)"
-    fi
+    selected=$(find ~/Documents/Github -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+if ! tmux has-session -t $selected_name/; then 
+    tmux new-session -d -s $selected_name -t $selected_name
+fi
+
+tmux attach-session -t $selected_name
+
+# tmux_running=$(pgrep tmux)
+# 
+# if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+#     tmux new-session -s $selected_name -c $selected
+#     exit 0
+# fi
+# 
+# if ! tmux has-session -t=$selected_name 2> /dev/null; then
+#     tmux new-session -ds $selected_name -c $selected
+# fi
+# 
+# tmux switch-client -t $selected_name
