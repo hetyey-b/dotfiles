@@ -25,10 +25,6 @@ return require('packer').startup(function(use)
 
     use('theprimeagen/harpoon')
 
-    use('mbbill/undotree')
-
-    use('tpope/vim-fugitive')
-
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -53,4 +49,6 @@ return require('packer').startup(function(use)
     }
 
     use('christoomey/vim-tmux-navigator')
+
+    use('windwp/nvim-ts-autotag')
 end)

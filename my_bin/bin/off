@@ -1,3 +1,4 @@
 #!/bin/bash
 
+obsidian-sync
 shutdown -h now
