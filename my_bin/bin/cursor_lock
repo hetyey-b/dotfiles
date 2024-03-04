@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Locking cursor to one display"
+xpointerbarrier 1 1 1 1

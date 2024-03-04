@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
         -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/.nvim' } }
     }
 
     use {
@@ -51,4 +51,27 @@ return require('packer').startup(function(use)
     use('christoomey/vim-tmux-navigator')
 
     use('windwp/nvim-ts-autotag')
+
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*",  -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
+        config = function()
+            require("obsidian").setup({
+                workspaces = {
+                    {
+                        name = "Personal",
+                        path = "~/Documents/Github/obsidian_md_notes",
+                    },
+                },
+
+                -- see below for full list of options 👇
+            })
+        end,
+    })
 end)
