@@ -3,7 +3,7 @@ bindsym $mod+o exec obsidian
 
 # Screenshot
 bindsym $mod+Shift+s exec screenshot
-bindsym Print exec printscreen
+bindsym $mod+Shift+p exec printscreen
 
 # Lock
 bindsym $mod+Shift+Return exec lock
