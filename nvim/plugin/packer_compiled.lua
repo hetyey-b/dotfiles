@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  [".nvim"] = {
-    loaded = true,
-    path = "/home/craken/.local/share/nvim/site/pack/packer/start/.nvim",
-    url = "https://github.com/nvim-lua/.nvim"
-  },
   LuaSnip = {
     loaded = true,
     path = "/home/craken/.local/share/nvim/site/pack/packer/start/LuaSnip",
