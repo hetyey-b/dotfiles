@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat ~/Documents/Github/dotfiles/nvim/cheatsheet.md
