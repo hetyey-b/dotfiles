@@ -15,3 +15,8 @@
 - _vca      : code actions
 - _vrr      : references
 - _vrn      : rename
+
+# Generate number sequence
+- Ctrl+V to select lines with numbers
+- g Ctrl+a to increase each with one
+- e.g. 2g Ctrl+a to change step count
