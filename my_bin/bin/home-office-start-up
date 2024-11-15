@@ -4,3 +4,4 @@ turn-off-laptop-display
 nosleep
 obsidian-sync
 kill-skype
+gnome-terminal -e "zsh -c newsboat;zsh"
