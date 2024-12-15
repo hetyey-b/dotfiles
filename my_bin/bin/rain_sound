@@ -1,0 +1,3 @@
+#!/bin/bash
+
+vlc ~/Music/Rain.mp3

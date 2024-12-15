@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ~/Pictures
+for i in `ls ./*.webp`
+do
+    echo $i => ${i::-5}.png
+    dwebp $i -o ${i::-5}.png
+    rm $i
+done
