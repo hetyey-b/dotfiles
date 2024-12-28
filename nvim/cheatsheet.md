@@ -19,6 +19,8 @@
 - _db       : debugger toggle breakpoint
 - _dc       : debugger continue
 
+- _dd       : add "debugger;" on a line above
+
 # Generate number sequence
 - Ctrl+V to select lines with numbers
 - g Ctrl+a to increase each with one
