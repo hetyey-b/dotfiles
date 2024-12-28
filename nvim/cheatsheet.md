@@ -16,6 +16,9 @@
 - _vrr      : references
 - _vrn      : rename
 
+- _db       : debugger toggle breakpoint
+- _dc       : debugger continue
+
 # Generate number sequence
 - Ctrl+V to select lines with numbers
 - g Ctrl+a to increase each with one

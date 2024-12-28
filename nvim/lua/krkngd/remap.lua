@@ -26,3 +26,5 @@ vim.keymap.set("n", "<leader>%", ":vsplit<CR>")
 vim.keymap.set("n", "<tab>", ":bnext<CR>")
 vim.keymap.set("n", "<s-tab>", ":bprevious<CR>")
 vim.keymap.set("n", "<C-w>", ":bdelete<CR>")
+
+vim.keymap.set("n", "<leader>dd", "Odebugger;<Esc>j")

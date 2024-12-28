@@ -1,3 +1,3 @@
-require("krkngd.remap")
 require("krkngd.set")
+require("krkngd.remap")
 

@@ -51,6 +51,17 @@ return require('packer').startup(function(use)
 
     use('windwp/nvim-ts-autotag')
 
+    -- nvim-dap (Debug Adapter Protocol)
+    -- Need to install debug adapter per language
+    -- :help dap.txt
+    use('mfussenegger/nvim-dap')
+    -- dap ui
+    use {'rcarriga/nvim-dap-ui', requires = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio"
+        }
+    }
+
     use({
         "epwalsh/obsidian.nvim",
         tag = "*",  -- recommended, use latest release instead of latest commit
